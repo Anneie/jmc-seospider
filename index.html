@@ -56,29 +56,31 @@ ul.graph li.percent80
 {
 	background: "graph80.jpg" repeat-y 80% 0;
 }
-<script type="text/javascript" src="wz_jsgraphics.js"></script>
-<script type="text/javascript" src="pie.js">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-<!-- Pie Graph script-By Balamurugan S http://www.sbmkpm.com/ //-->
-<!-- Script featured/ available at Dynamic Drive code: http://www.dynamicdrive.com //-->
+      function drawChart() {
 
-</script>
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
 
-<div id="pieCanvas" style="overflow: auto; position:relative;height:350px;width:380px;"></div>
+        var options = {
+          title: 'My Daily Activities'
+        };
 
-<script type="text/javascript">
-var p = new pie();
-p.add("html",100);
-p.add("java",200);
-p.add("css",150);
-p.add("images",120);
-p.add("pdf",315);
-p.add("other",415);
-p.add("flash",315);
-p.render("pieCanvas", "Pie Graph")
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-</script>
-
+        chart.draw(data, options);
+      }
+    </script>
 </style>
 </head>
 
@@ -92,7 +94,7 @@ p.render("pieCanvas", "Pie Graph")
 	<li class="percent80">0.00%-javascript</li>
 	<li class="percent100">15.72%-images</li>
 	<li class="percent100">0.63%-other</li>
-</ul>
+</ul> <div id="piechart" style="width: 900px; height: 500px;"></div>
 <hr><center>
 <table border="6">
 <tr>
